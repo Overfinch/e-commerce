@@ -70,7 +70,7 @@
                 <div class="product">
                     <a href="{{ $product->slug }}"><img src="img/macbook-pro.png" alt="product"></a>
                     <a href="{{ $product->slug }}"><div class="product-name">{{ $product->name }}</div></a>
-                    <div class="product-price">{{ $product->price }}</div>
+                    <div class="product-price">{{ $product->presentPrice() }}</div>
                 </div>
             @endforeach
         </div> <!-- end products -->
