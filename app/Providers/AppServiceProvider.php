@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 

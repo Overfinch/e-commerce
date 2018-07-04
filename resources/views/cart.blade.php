@@ -52,7 +52,7 @@
                             <div class="cart-table-row-left">
                                 <a href="{{route('shop.show', $model->slug)}}"><img src="{{asset('img/products/'.$model->slug.'.png')}}" alt="item" class="cart-table-img"></a>
                                 <div class="cart-item-details">
-                                    <div class="cart-table-item"><a href="{{route('shop.show', $model->slug)}}">{{$cartItem->name}}</a></div>
+                                    <div class="cart-table-item"><a href="{{route('shop.show', $model->slug)}}">{{$model->name}}</a></div>
                                     <div class="cart-table-description">{{$model->details}}</div>
                                 </div>
                             </div>
@@ -130,7 +130,8 @@
 
 
                 <h3>You have no items Saved for Later.</h3>
-
+                @else
+                    <h2>Cart is empty</h2>
                 @endif
 
         </div>
