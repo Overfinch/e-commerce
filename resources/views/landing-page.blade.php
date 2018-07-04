@@ -22,10 +22,14 @@
     <div class="top-nav container">
         <div class="top-nav-left">
             <div class="logo">Ecommerce</div>
-
         </div>
         <div class="top-nav-right">
-
+            <ul>
+                <li><a href="{{route('shop.index')}}">Shop</a></li>
+                <li><a href="">Abuot</a></li>
+                <li><a href="{{route('landing-page')}}">Blog</a></li>
+                <li><a href="{{route('cart.index')}}">Cart<span class="cart-count"><span>3</span></span></a></li>
+            </ul>
         </div>
     </div> <!-- end top-nav -->
     <div class="hero container">
@@ -68,15 +72,15 @@
         <div class="products text-center">
             @foreach ($products as $product)
                 <div class="product">
-                    <a href="{{ $product->slug }}"><img src="img/macbook-pro.png" alt="product"></a>
-                    <a href="{{ $product->slug }}"><div class="product-name">{{ $product->name }}</div></a>
+                    <a href="{{ route('shop.show', $product->slug) }}"><img src="{{asset('img/products/'.$product->slug.'.png')}}" alt="product"></a>
+                    <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->name }}</div></a>
                     <div class="product-price">{{ $product->presentPrice() }}</div>
                 </div>
             @endforeach
         </div> <!-- end products -->
 
         <div class="text-center button-container">
-            <a href="" class="button">View more products</a>
+            <a href="{{route('shop.index')}}" class="button">View more products</a>
         </div>
 
     </div> <!-- end container -->

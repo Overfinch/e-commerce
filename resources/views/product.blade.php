@@ -12,32 +12,14 @@
         <span>{{ $product->name }}</span>
     @endcomponent
 
-    <div class="container">
-        @if (session()->has('success_message'))
-            <div class="alert alert-success">
-                {{ session()->get('success_message') }}
-            </div>
-        @endif
-
-        @if(count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
-
     <div class="product-section container">
         <div>
             <div class="product-section-image">
-                <img src="" alt="product" class="active" id="currentImage">
+                <img src="{{asset('img/products/'.$product->slug.'.png')}}" alt="product" class="active" id="currentImage">
             </div>
             <div class="product-section-images">
                 <div class="product-section-thumbnail selected">
-                    <img src="" alt="product">
+                    <img src="{{asset('img/products/'.$product->slug.'.png')}}" alt="product">
                 </div>
 
                 @if ($product->images)
@@ -49,15 +31,14 @@
                 @endif
             </div>
         </div>
+
         <div class="product-section-information">
             <h1 class="product-section-title">{{ $product->name }}</h1>
             <div class="product-section-subtitle">{{ $product->details }}</div>
             <div class="product-section-price">{{ $product->presentPrice() }}</div>
-
             <p>
                 {!! $product->description !!}
             </p>
-
             <p>&nbsp;</p>
 
             <form action="" method="POST">
@@ -70,5 +51,6 @@
         </div>
     </div> <!-- end product-section -->
 
+    @include('partials.might-like')
 
 @endsection
