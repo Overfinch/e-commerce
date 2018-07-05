@@ -41,11 +41,15 @@
             </p>
             <p>&nbsp;</p>
 
-            <form action="{{route('cart.store')}}" method="POST">
-                {{ csrf_field() }}
-                <input type="hidden" name="id" value="{{ $product->id }}">
-                <button type="submit" class="button button-plain">Add to Cart</button>
-            </form>
+            @if($isInCart)
+                <a href="{{route('cart.index')}}" class="button-primary"><i class="fas fa-check"></i> Allready in Cart</a>
+            @else
+                <form action="{{route('cart.store')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <button type="submit" class="button button-plain"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </form>
+            @endif
         </div>
     </div> <!-- end product-section -->
 

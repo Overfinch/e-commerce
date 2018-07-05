@@ -58,16 +58,13 @@
                             </div>
                             <div class="cart-table-row-right">
                                 <div class="cart-table-actions">
-                                    <form action="http://laravel-ecommerce-example.loc/cart/027c91341fd5cf4d2579b49c4b6a90da" method="POST">
-                                        <input type="hidden" name="_token" value="CfVdd1oeRUfoQxn2StfcyilGXmY2oZwCuta7A4zP">
-                                        <input type="hidden" name="_method" value="DELETE">
-
+                                    <form action="{{route('cart.destroy', $cartItem->rowId)}}" method="POST">
+                                        {{csrf_field()}}
+                                        {{method_field('DELETE')}}
                                         <button type="submit" class="cart-options">Remove</button>
                                     </form>
 
-                                    <form action="http://laravel-ecommerce-example.loc/cart/switchToSaveForLater/027c91341fd5cf4d2579b49c4b6a90da" method="POST">
-                                        <input type="hidden" name="_token" value="CfVdd1oeRUfoQxn2StfcyilGXmY2oZwCuta7A4zP">
-
+                                    <form action="" method="POST">
                                         <button type="submit" class="cart-options">Save for Later</button>
                                     </form>
                                 </div>
@@ -78,7 +75,7 @@
                                         @endfor
                                     </select>
                                 </div>
-                                <div>{{$cartItem->price}}</div>
+                                <div>{{$model->presentPrice()}}</div>
                             </div>
                         </div> <!-- end cart-table-row -->
 
@@ -111,20 +108,20 @@
                     <div class="cart-totals-right">
                         <div>
                             Subtotal <br>
-                            Tax (13%)<br>
+                            Tax (0%)<br>
                             <span class="cart-totals-total">Total</span>
                         </div>
                         <div class="cart-totals-subtotal">
-                            {{Cart::subtotal()}} <br>
-                            {{Cart::tax()}}<br>
-                            <span class="cart-totals-total">{{Cart::total()}}</span>
+                            {{presentPrice(Cart::subtotal())}} <br>
+                            {{presentPrice(Cart::tax())}}<br>
+                            <span class="cart-totals-total">{{presentPrice(Cart::total())}}</span>
                         </div>
                     </div>
                 </div> <!-- end cart-totals -->
 
                 <div class="cart-buttons">
-                    <a href="http://laravel-ecommerce-example.loc/shop" class="button">Continue Shopping</a>
-                    <a href="http://laravel-ecommerce-example.loc/checkout" class="button-primary">Proceed to Checkout</a>
+                    <a href="{{route('shop.index')}}" class="button">Continue Shopping</a>
+                    <a href="#" class="button-primary">Proceed to Checkout</a>
                 </div>
 
 
@@ -132,6 +129,7 @@
                 <h3>You have no items Saved for Later.</h3>
                 @else
                     <h2>Cart is empty</h2>
+                    <a href="{{route('shop.index')}}" class="button">Continue shopping</a>
                 @endif
 
         </div>

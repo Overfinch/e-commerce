@@ -8,7 +8,13 @@
                 <li><a href="{{route('shop.index')}}">Shop</a></li>
                 <li><a href="">Abuot</a></li>
                 <li><a href="{{route('landing-page')}}">Blog</a></li>
-                <li><a href="{{route('cart.index')}}">Cart<span class="cart-count"><span>3</span></span></a></li>
+                <li>
+                    <a href="{{route('cart.index')}}">Cart
+                        @if(Cart::count() > 0)
+                            <span class="cart-count"><span>{{Cart::count()}}</span></span>
+                        @endif
+                    </a>
+                </li>
             </ul>
         </div>
     </div> <!-- end top-nav -->
