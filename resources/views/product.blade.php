@@ -50,6 +50,7 @@
                     <button type="submit" class="button button-plain"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
                 </form>
             @endif
+
         </div>
     </div> <!-- end product-section -->
 

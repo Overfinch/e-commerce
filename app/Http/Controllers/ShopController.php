@@ -21,15 +21,20 @@ class ShopController extends Controller
         $product = Product::where('slug', $slug)->firstOrFail();
         $mightAlsoLike = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
 
-        $isInCart = Cart::search(function ($cartItem, $rowId) use ($product){ // проверяем есть ли этот товар уже в корзине
-            return $cartItem->id === $product->id;
-        });
-        $isInCart = $isInCart->isNotEmpty(); // true если товар уже в корзине, и false если нет
+        $isInCart = $this->isInCart($product);
 
         return view('product')->with([
             'product' => $product,
             'isInCart' => $isInCart,
             'mightAlsoLike' => $mightAlsoLike
         ]);
+    }
+
+    private function isInCart(Product $product){
+        $isInCart = Cart::search(function ($cartItem) use ($product){ // проверяем есть ли этот товар уже в корзине
+            return $cartItem->id === $product->id;
+        });
+
+        return $isInCart->isNotEmpty(); // true если товар уже в корзине, и false если нет
     }
 }
