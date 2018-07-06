@@ -134,7 +134,7 @@
 
                 @if(Cart::instance('saveForLater')->count() > 0)
                     <div class="spacer"></div>
-                    <h2>{{Cart::instance('saveForLater')->count()}} item(s) Saved for Later</h2>
+                    <h2 id="saved-for-later-title">{{Cart::instance('saveForLater')->count()}} item(s) Saved for Later</h2>
 
                     <div class="cart-table">
 

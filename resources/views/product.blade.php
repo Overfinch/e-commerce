@@ -42,12 +42,32 @@
             <p>&nbsp;</p>
 
             @if($isInCart)
-                <a href="{{route('cart.index')}}" class="button-primary"><i class="fas fa-check"></i> Allready in Cart</a>
+                <a href="{{route('cart.index')}}">
+                    <div class="button-primary">
+                        <i class="fas fa-check"></i> Allready in Cart
+                    </div>
+                </a>
             @else
                 <form action="{{route('cart.store')}}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $product->id }}">
                     <button type="submit" class="button button-plain"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </form>
+            @endif
+
+            <div class="spacer"></div>
+
+            @if($isInSaveForLater)
+                <a href="{{url('cart#saved-for-later-title')}}" >
+                    <div class="button button-save-for-later button-save-for-later-active">
+                        <i class="fas fa-heart"></i> Allready Saved For Later
+                    </div>
+                </a>
+            @else
+                <form action="{{route('saveForLater.store')}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <button type="submit" class="button button-save-for-later"><i class="far fa-heart"></i> Save For Later</button>
                 </form>
             @endif
 

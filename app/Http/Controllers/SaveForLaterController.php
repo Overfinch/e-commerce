@@ -21,7 +21,16 @@ class SaveForLaterController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $duplicates = Cart::instance('saveForLater')->search(function ($cartItem, $rowId) use ($request) { // проверяем, не находится ли этот товар уже в крозине
+            return $cartItem->id == $request->id;
+        });
+        if ($duplicates->isNotEmpty()) { // если этот товар уже находится в корзине, то перенаправляем обратно с сообщением что он уже в корзине
+            return redirect()->route('cart.index')->with('success_message', 'Item is already in your cart!');
+        }
+
+        $product = Product::findOrFail($request->id); // находим продукт по id
+        Cart::instance('saveForLater')->add($product->id, $product->name, 1, $product->price)->associate(Product::class); // добавляем его в корзину и ассоциируем с моделью
+        return redirect()->back();
     }
 
     public function show($id)

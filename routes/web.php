@@ -28,7 +28,7 @@ Route::post('cart/switchToSaveForLater/{product}','CartController@switchToSaveFo
 
 Route::delete('saveForLater/{product}','SaveForLaterController@destroy')->name('saveForLater.destroy');
 Route::post('saveForLater/switchToCart/{product}','SaveForLaterController@switchToCart')->name('saveForLater.switchToCart');
-
+Route::post('saveForLater','SaveForLaterController@store')->name('saveForLater.store');
 
 Route::get('cart/empty', function(){
     Cart::destroy();
