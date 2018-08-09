@@ -19,7 +19,9 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/responsive.css')}}">
-    <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
+     <link rel="stylesheet" href="{{asset('css/algolia.css')}}">
+
+    @yield('extra-css')
 
 </head>
 
@@ -30,6 +32,8 @@
 @yield('content')
 
 @include('partials.footer')
+
+@yield('extra-js')
 
 </body>
 </html>

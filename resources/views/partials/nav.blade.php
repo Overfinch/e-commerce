@@ -10,7 +10,7 @@
                 <li><a href="{{route('landing-page')}}">Blog</a></li>
                 <li>
                     <a href="{{route('cart.index')}}">Cart
-                        @if(Cart::count() > 0)
+                        @if(Cart::instance('default')->count() > 0)
                             <span class="cart-count"><span>{{Cart::count()}}</span></span>
                         @endif
                     </a>

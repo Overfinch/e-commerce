@@ -31,3 +31,4 @@ Route::post('saveForLater/switchToCart/{product}','SaveForLaterController@switch
 Route::post('saveForLater','SaveForLaterController@store')->name('saveForLater.store');
 
 Route::get('checkout','CheckoutController@index')->name('checkout.index');
+Route::post('checkout','CheckoutController@store')->name('checkout.store');
