@@ -15,7 +15,7 @@ class CheckoutController extends Controller
     public function store(Request $request){
         try{
             $charge = Stripe::charges()->create([
-                'amount' => Cart::total() / 100,
+                'amount' => Cart::instance('default')->total() / 100,
                 'currency' => 'UAH',
                 'source' => $request->stripeToken,
                 'description' => 'Order',
