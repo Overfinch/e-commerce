@@ -214,6 +214,8 @@
             form.addEventListener('submit', function(event) {
                 event.preventDefault();
 
+                // disabling the submit button after first click
+                document.getElementById('complete-order').disabled = true;
                 var options = {
                     name: document.getElementById('name_on_card').value,
                     address_line1: document.getElementById('address').value,

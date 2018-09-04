@@ -34,7 +34,7 @@ class CheckoutController extends Controller
             Cart::instance('default')->destroy(); // удаляем содержимое корзины
             return redirect()->route('confirmation.index')->with('success_message','Thank you! Your payment was successfully accepted!'); // обязательно передаём success_message
         } catch (CardErrorException $e){
-            return back()->withErrors('Error',$e->getMessage());
+            return back()->withErrors('Error! '. $e->getMessage());
         }
     }
 }
