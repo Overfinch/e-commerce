@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckoutRequest;
 use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -13,7 +14,7 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
-    public function store(Request $request){
+    public function store(CheckoutRequest $request){
         try{
             $contents = Cart::instance('default')->content()->map(function ($item){ // собираем json с данными про товары в корзине что бы передать его в stripe
                     return $item->model->slug.', '.$item->qty;
