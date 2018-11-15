@@ -70,7 +70,7 @@
                                     </form>
                                 </div>
                                 <div>
-                                    <select class="quantity" data-id="027c91341fd5cf4d2579b49c4b6a90da">
+                                    <select class="quantity" data-id="{{$cartItem->rowId}}">
                                         @for ($i = 1; $i < 5 + 1 ; $i++)
                                             <option {{ $cartItem->qty == $i ? 'selected' : '' }}>{{ $i }}</option>
                                         @endfor
@@ -188,4 +188,33 @@
 
     @include('partials.might-like')
 
+@endsection
+
+@section('extra-js')
+    <script src="{{asset('js/app.js')}}"></script>
+
+    <script>
+        (function () {
+            const classname = document.querySelectorAll('.quantity');
+
+            Array.from(classname).forEach(function (element) {
+                element.addEventListener('change', function () {
+                    const id = element.getAttribute('data-id');
+                    axios.patch('/cart/'+id , {
+                        quantity: this.value
+                    })
+                        .then(function (response) {
+                            //console.log(response);
+                            window.location.href = '{{route('cart.index')}}';
+                        })
+                        .catch(function (error) {
+                            //console.log(error);
+                            window.location.href = '{{route('cart.index')}}';
+                        });
+
+                });
+            });
+
+        })();
+    </script>
 @endsection
