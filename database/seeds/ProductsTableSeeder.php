@@ -11,76 +11,38 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Product::create([
-            'name' => 'Laptop 1',
-            'slug' => 'Laptop-1',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
+        for ($i = 1; $i <= 9; $i++){
+            \App\Product::create([
+                'name' => 'Laptop '.$i,
+                'slug' => 'Laptop-'.$i,
+                'details' => [13,14,15][array_rand([13,14,15])].'inch, '.[1,2,3][array_rand([1,2,4])].' TB SSD, 32GB RAM',
+                'price' => rand(1500000,2500000),
+                'description' => 'Lorem '.$i.' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ])->categories()->attach(1);
+        }
 
-        \App\Product::create([
-            'name' => 'Laptop 2',
-            'slug' => 'Laptop-2',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
+        $product = \App\Product::find(1);
+        $product->categories()->attach(2);
 
-        \App\Product::create([
-            'name' => 'Laptop 3',
-            'slug' => 'Laptop-3',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
+        for ($i = 1; $i <= 30; $i++){
+            \App\Product::create([
+                'name' => 'Desktop '.$i,
+                'slug' => 'Desktop-'.$i,
+                'details' => [13,14,15][array_rand([13,14,15])].'inch, '.[1,2,3][array_rand([1,2,4])].' TB SSD, 32GB RAM',
+                'price' => rand(1500000,2500000),
+                'description' => 'Lorem '.$i.' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ])->categories()->attach(2);
+        }
 
-        \App\Product::create([
-            'name' => 'Laptop 4',
-            'slug' => 'Laptop-4',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
+        for ($i = 1; $i <= 9; $i++){
+            \App\Product::create([
+                'name' => 'Phone '.$i,
+                'slug' => 'Phone-'.$i,
+                'details' => [16,32,64][array_rand([16,32,64])].' GB, 5.'.[1,4,5][array_rand([1,4,5])].' inch screen',
+                'price' => rand(1500000,2500000),
+                'description' => 'Lorem '.$i.' ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+            ])->categories()->attach(3);
+        }
 
-        \App\Product::create([
-            'name' => 'Laptop 5',
-            'slug' => 'Laptop-5',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
-
-        \App\Product::create([
-            'name' => 'Laptop 6',
-            'slug' => 'Laptop-6',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
-
-        \App\Product::create([
-            'name' => 'Laptop 7',
-            'slug' => 'Laptop-7',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
-
-        \App\Product::create([
-            'name' => 'Laptop 8',
-            'slug' => 'Laptop-8',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
-
-        \App\Product::create([
-            'name' => 'Laptop 9',
-            'slug' => 'Laptop-9',
-            'details' => '15 inch, core i7, 2tb ssd',
-            'price' => 14999,
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sodales sem eu posuere auctor. Quisque dapibus, purus id mattis aliquam, arcu diam rutrum turpis, et bibendum lorem erat quis felis. Morbi id nibh nec tellus scelerisque scelerisque a non purus. Integer fringilla nibh turpis, in tempus nibh fermentum sit amet. Fusce pulvinar hendrerit tincidunt. Duis ultrices maximus scelerisque. Nullam et turpis venenatis, lobortis mi vitae, tristique nibh.',
-        ]);
     }
 }
